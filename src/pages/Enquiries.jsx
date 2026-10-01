@@ -119,6 +119,7 @@ export default function Enquiries() {
                 <th className="px-6 py-4 font-semibold">Phone</th>
                 <th className="px-6 py-4 font-semibold">Email</th>
                 <th className="px-6 py-4 font-semibold">Service / Requirement</th>
+                <th className="px-6 py-4 font-semibold">Message</th>
                 <th className="px-6 py-4 font-semibold">Date & Time</th>
                 <th className="px-6 py-4 font-semibold">Status</th>
               </tr>
@@ -126,20 +127,21 @@ export default function Enquiries() {
             <tbody className="divide-y divide-slate-100">
               {loading ? (
                 <tr>
-                  <td colSpan="7" className="px-6 py-4 text-center text-slate-500">Loading enquiries...</td>
+                  <td colSpan="8" className="px-6 py-4 text-center text-slate-500">Loading enquiries...</td>
                 </tr>
               ) : enquiries.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="px-6 py-4 text-center text-slate-500">No enquiries found</td>
+                  <td colSpan="8" className="px-6 py-4 text-center text-slate-500">No enquiries found</td>
                 </tr>
               ) : (
                 enquiries.map((enq, idx) => (
                   <tr key={enq._id || idx} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4 font-medium text-slate-900">{idx + 1}</td>
                   <td className="px-6 py-4 font-medium text-slate-900">{enq.name}</td>
-                  <td className="px-6 py-4">{enq.phone}</td>
+                  <td className="px-6 py-4">{enq.phone || '-'}</td>
                   <td className="px-6 py-4">{enq.email}</td>
-                  <td className="px-6 py-4">{enq.service}</td>
+                  <td className="px-6 py-4">{enq.service || '-'}</td>
+                  <td className="px-6 py-4 max-w-[200px] truncate" title={enq.message}>{enq.message || '-'}</td>
                   <td className="px-6 py-4 text-slate-500">{enq.date}</td>
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium border
