@@ -46,7 +46,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }) {
   };
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-10 sticky top-0">
+    <header className="h-16 bg-white/70 backdrop-blur-md border-b border-slate-200/60 flex items-center justify-between px-6 z-10 sticky top-0 transition-all duration-300">
       <div className="flex items-center">
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -66,7 +66,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }) {
             onClick={() => setDropdownOpen(!dropdownOpen)}
             className="flex items-center space-x-2 focus:outline-none"
           >
-            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-semibold shadow-sm">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white text-sm font-bold shadow-md shadow-blue-500/20 ring-2 ring-white hover:scale-105 transition-transform duration-200">
               {adminUser.initials}
             </div>
             <span className="text-sm font-medium text-slate-700 hidden sm:block">{adminUser.name}</span>
@@ -74,7 +74,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }) {
           </button>
           
           {dropdownOpen && (
-            <div className="absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="absolute right-0 mt-3 w-48 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
               <button 
                 onClick={handleLogout}
                 className="w-full flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"

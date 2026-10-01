@@ -27,7 +27,7 @@ export default function Layout({ children }) {
   }, [location.pathname]);
 
   return (
-    <div className="h-screen overflow-hidden bg-gray-50/50 flex font-sans text-slate-800 relative">
+    <div className="h-screen overflow-hidden bg-slate-50 flex font-sans text-slate-900 relative selection:bg-blue-100 selection:text-blue-900">
       {/* Mobile backdrop */}
       {sidebarOpen && (
         <div 
