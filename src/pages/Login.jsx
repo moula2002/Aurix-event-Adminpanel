@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Mail, ArrowRight } from 'lucide-react';
 import logoImage from '../assets/ax-aurix-final-for-dark-bg.png';
 
