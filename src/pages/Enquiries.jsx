@@ -131,24 +131,7 @@ export default function Enquiries() {
           </h1>
           <p className="text-sm text-slate-500 mt-1 font-medium">Track and manage all your website enquiries in one place.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center space-x-2 bg-white border border-slate-200 px-4 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 shadow-sm transition-all"
-          >
-            <Download className="w-4 h-4" />
-            <span>Export CSV</span>
-          </motion.button>
-          <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center space-x-2 bg-slate-900 px-4 py-2 rounded-xl text-sm font-semibold text-white hover:bg-slate-800 shadow-md shadow-slate-900/20 transition-all"
-          >
-            <UserPlus className="w-4 h-4" />
-            <span>Add Manual</span>
-          </motion.button>
-        </div>
+
       </motion.div>
 
       {/* Stats Grid */}
