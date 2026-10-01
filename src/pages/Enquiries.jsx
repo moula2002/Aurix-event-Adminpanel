@@ -8,7 +8,8 @@ import {
   ChevronDown,
   Download,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Trash2
 } from 'lucide-react';
 
 // Stats will be computed dynamically from data
@@ -28,6 +29,21 @@ export default function Enquiries() {
         setLoading(false);
       });
   }, []);
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this enquiry?')) return;
+    
+    try {
+      const res = await fetch(`https://aurix-event-server.onrender.com/api/enquiries/${id}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        setEnquiries(enquiries.filter(e => e._id !== id));
+      }
+    } catch (err) {
+      console.error('Error deleting enquiry:', err);
+    }
+  };
 
   // Dynamic Stats Calculation
   const totalEnquiries = enquiries.length;
@@ -122,16 +138,17 @@ export default function Enquiries() {
                 <th className="px-6 py-4 font-semibold">Message</th>
                 <th className="px-6 py-4 font-semibold">Date & Time</th>
                 <th className="px-6 py-4 font-semibold">Status</th>
+                <th className="px-6 py-4 font-semibold text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {loading ? (
                 <tr>
-                  <td colSpan="8" className="px-6 py-4 text-center text-slate-500">Loading enquiries...</td>
+                  <td colSpan="9" className="px-6 py-4 text-center text-slate-500">Loading enquiries...</td>
                 </tr>
               ) : enquiries.length === 0 ? (
                 <tr>
-                  <td colSpan="8" className="px-6 py-4 text-center text-slate-500">No enquiries found</td>
+                  <td colSpan="9" className="px-6 py-4 text-center text-slate-500">No enquiries found</td>
                 </tr>
               ) : (
                 enquiries.map((enq, idx) => (
@@ -151,6 +168,15 @@ export default function Enquiries() {
                       }`}>
                       {enq.status}
                     </span>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <button 
+                        onClick={() => handleDelete(enq._id)}
+                        className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                        title="Delete Enquiry"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </td>
                   </tr>
                 ))
